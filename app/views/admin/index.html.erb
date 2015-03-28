@@ -1,0 +1,55 @@
+<h1>Admin panel</h1>
+
+<h2>Gifts</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Image</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @gifts.each do |gift| %>
+      <tr>
+        <td><%= link_to gift.name, gift_path(gift) %></td>
+        <td><%= number_to_currency(gift.price) %></td>
+        <td><%= image_tag gift.image, width: '70px' %></td>
+        <td><%= link_to '<i class="fa fa-edit fa-2x"></i>'.html_safe, edit_gift_path(gift), title: 'Edit' %></td>
+        <td><%= link_to '<i class="fa fa-trash fa-2x"></i>'.html_safe, gift, method: :delete, data: { confirm: 'Are you sure?' }, title: 'Delete' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<hr>
+<h2>Users</h2>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Email</th>
+			<th>Last signed in</th>
+			<th>Roles</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @users.each do |user| %>
+			<tr>
+				<td><%= user.account.name %></td>
+				<td><%= user.email %></td>
+				<td><%= user.last_sign_in_at %></td>
+				<td><% user.roles.each do |role|  %><%= role.name %>, <% end %> </td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+
+
+<hr>
+<h2>Upcoming deliveries</h2>
+
+

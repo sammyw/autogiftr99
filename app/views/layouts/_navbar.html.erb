@@ -1,0 +1,26 @@
+<!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><b>Autogiftr</b></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <% unless user_signed_in? %>
+              <li><a href="/users/sign_in">Already a member?</a></li>
+            <% else %>
+              <% if current_user.has_role? :admin %>
+                <li><%= link_to 'Admin', admin_path %></li>
+              <% end %>
+              <li><%= link_to 'My account', account_path(current_user.account) %></li>
+              <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
+            <% end %>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>

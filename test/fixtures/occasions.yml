@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  occasion_type: MyString
+  date: 2015-03-21
+  description: MyText
+  message: MyText
+  recipient_id: 
+
+two:
+  occasion_type: MyString
+  date: 2015-03-21
+  description: MyText
+  message: MyText
+  recipient_id: 

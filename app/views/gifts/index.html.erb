@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Gifts</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Image</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @gifts.each do |gift| %>
+      <tr>
+        <td><%= link_to gift.name, gift_path(gift) %></td>
+        <td><%= number_to_currency(gift.price) %></td>
+        <td><%= image_tag gift.image, width: '70px' %></td>
+        <td><%= link_to '<i class="fa fa-edit fa-2x"></i>'.html_safe, edit_gift_path(gift), title: 'Edit' %></td>
+        <td><%= link_to '<i class="fa fa-trash fa-2x"></i>'.html_safe, gift, method: :delete, data: { confirm: 'Are you sure?' }, title: 'Delete' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Gift', new_gift_path, class: 'btn btn-success' %>
